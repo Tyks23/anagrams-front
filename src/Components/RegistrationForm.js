@@ -1,23 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from 'axios';
+import {useForm} from 'react-hook-form';
 
 
 
 function RegistrationForm() {
+ 
+    const{ register, handleSubmit, formState:{ errors } } = useForm();
 
-    const [email, setEmail]=useState('');
-    const [name, setName]=useState('');
-    const [password, setPassword]=useState('');
-
-
-    function Register() {
+    const registration = data => {
         console.log('register function');
-        console.log(JSON.stringify(newUser));
+        console.log(data);
 
-        axios.post('https://localhost:8000/api/register', {
-            email: newUser.email,
-            name: newUser.name,
-            password: newUser.password
+        axios.post('http://localhost:8000/api/register', {
+            email: data.email,
+            name: data.name,
+            password: data.password,
+            password_confirmation: data.password
           })
           .then(function (response) {
             console.log(response);
@@ -29,10 +28,15 @@ function RegistrationForm() {
 
     return(
       <div className='form'>  
-            <input type='text' name='name' value={newUser.name} placeholder='name'></input>
-            <input type='text' name='email' value={newUser.email} placeholder='email'></input>
-            <input type='password' name='password' value={newUser.password} placeholder='password'></input>
-            <button onClick={Register}>Register</button>  
+        <form onSubmit={handleSubmit(registration)}>
+            <input type='text' {...register('name', {required:true, minLength: 4})}  placeholder='name'></input>
+            {errors.name?.type==='required' && "Name required"}
+            {errors.name?.type==='minLength' && "Name must be atleast 4 characters long"}
+            <input type='text' {...register('email')}  placeholder='email'></input>
+            <input type='password' {...register('password')} placeholder='password'></input>
+            <button>Register</button>
+
+        </form>
       </div>      
     )       
 }
