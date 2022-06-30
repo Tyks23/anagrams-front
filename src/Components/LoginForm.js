@@ -4,7 +4,7 @@ import {useForm} from 'react-hook-form';
 
 
 
-function LoginForm() {
+export default function LoginForm({getLoginStatus}) {
  
     const{ register, handleSubmit, formState:{ errors } } = useForm();
 
@@ -19,6 +19,7 @@ function LoginForm() {
           })
           .then(function (response) {
             window.sessionStorage.setItem("token", "Bearer "+ response.data.token);
+            getLoginStatus(true);
             console.log(response);
           })
           .catch(function (error) {
@@ -38,4 +39,3 @@ function LoginForm() {
       </div>      
     )       
 }
-export default LoginForm;

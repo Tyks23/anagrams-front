@@ -4,7 +4,7 @@ import {useForm} from 'react-hook-form';
 
 
 
-function RegistrationForm() {
+export default function RegistrationForm({getLoginStatus}) {
  
     const{ register, handleSubmit, formState:{ errors } } = useForm();
 
@@ -20,6 +20,7 @@ function RegistrationForm() {
           })
           .then(function (response) {
             window.sessionStorage.setItem("token", "Bearer "+ response.data.token);
+            getLoginStatus(true);
             console.log(response);
           })
           .catch(function (error) {
@@ -41,4 +42,3 @@ function RegistrationForm() {
       </div>      
     )       
 }
-export default RegistrationForm;
