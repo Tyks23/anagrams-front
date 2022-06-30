@@ -19,6 +19,7 @@ function RegistrationForm() {
             password_confirmation: data.password
           })
           .then(function (response) {
+            window.sessionStorage.setItem("token", "Bearer "+ response.data.token);
             console.log(response);
           })
           .catch(function (error) {
