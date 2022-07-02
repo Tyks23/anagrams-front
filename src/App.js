@@ -4,6 +4,7 @@ import RegistrationForm from './Components/RegistrationForm';
 import LoginForm from './Components/LoginForm';
 import React, {useState} from 'react';
 import AnagramForm from './Components/AnagramForm';
+import WordbaseSubmissionForm from './Components/WordbaseSubmittionForm';
 
 function App() {
 
