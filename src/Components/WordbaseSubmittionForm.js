@@ -11,18 +11,16 @@ function WordbaseSubmissionForm() {
 	};
 
 	const handleSubmission = () => {
+
+
 	};
 
-    const findAnagrams = () => {
-        //tee midagi
-    }
    
     return(
       <div className='form'>  
-        <input type="file" name="file" onChange={changeHandler} />
-			<div>
-				<button onClick={handleSubmission}>Submit</button>
-			</div>
+        <input type="file" name="file" onChange={changeHandler} />		
+		<button onClick={handleSubmission}>Submit</button>
+			
       </div>      
     )       
 }

@@ -2,7 +2,7 @@
 import './App.css';
 import RegistrationForm from './Components/RegistrationForm';
 import LoginForm from './Components/LoginForm';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import AnagramForm from './Components/AnagramForm';
 import WordbaseSubmissionForm from './Components/WordbaseSubmittionForm';
 
@@ -23,8 +23,9 @@ function App() {
     return (
       <div className="App">
         <AnagramForm />
+        <WordbaseSubmissionForm />
         <p>{checkLogin()}</p>
-        <button onClick={setLoggedIn(false)}>Log out</button>
+        <button onClick={()=>setLoggedIn(false)}>Log out</button>
       </div>  
     );
   }
@@ -33,11 +34,10 @@ function App() {
       <div className="App">
         <RegistrationForm getLoginStatus={getLoginStatus}/>
         <LoginForm  getLoginStatus={getLoginStatus}/>
-        <button onClick={() => setLoggedIn(true)}>Log in</button>
+        <button onClick={() => {setLoggedIn(true)}}>Log in</button>
       </div>
     );
   }
-  
 }
 
 export default App;
