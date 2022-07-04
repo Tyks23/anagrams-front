@@ -25,9 +25,10 @@ function WordbaseSubmissionForm() {
     console.log('submission handled');
     let formData = new FormData();
     formData.append("file", selectedFile);
-    axios.post('http://localhost:8000/api/handlewordbase', formData, {
+    axios.post('http://localhost:8000/api/handleSubmission', formData, {
       headers: {
         "Content-Type": "multipart/form-data",
+        "Authorization": " Bearer tN2x7UWul3UxTMQDgEHWU2Qpm2GTFMAaTrI73hQkzl80nno0b599G8NC86mY"
       }
     });
   };

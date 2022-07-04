@@ -5,9 +5,11 @@ export const authenticate = (path,data,callback) => {
 		.then(function (response) {
 			window.sessionStorage.setItem("token", "Bearer "+ response.data.token);
 			callback(true);
-			console.log(response);
+			console.log(response + "callback true");
 		})
 		.catch(function (error) {
+			callback(false);
+			
 			console.log(error);
 		});
 }
