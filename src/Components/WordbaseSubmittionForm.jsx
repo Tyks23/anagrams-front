@@ -5,39 +5,30 @@ import { useForm } from 'react-hook-form';
 function WordbaseSubmissionForm() {
 
   const { register, handleSubmit } = useForm();
-  const [selectedFile, setSelectedFile] = useState();
-  const [isFilePicked, setIsFilePicked] = useState(false);
-
-  const checkFileValidity = (file) => {
-    if (true) {
-      return true;
-    }
-    else return false;
-  }
-
-
-  const changeHandler = (event) => {
-    setSelectedFile(event.target.files[0]);
-    setIsFilePicked(true);
-  };
 
   const handleSubmission = async (data) => {
-    console.log('submission handled');
+
+    console.log(data);
     let formData = new FormData();
-    formData.append("file", selectedFile);
-    axios.post('http://localhost:8000/api/handleSubmission', formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        "Authorization": " Bearer tN2x7UWul3UxTMQDgEHWU2Qpm2GTFMAaTrI73hQkzl80nno0b599G8NC86mY"
-      }
-    });
+    if (data.file[0] === 'text/plain') {
+      formData.append("file", data.file[0]);
+      formData.append("user_id", window.sessionStorage.getItem("user_id"));
+      console.log(window.sessionStorage.getItem("token"));
+      axios.post('http://localhost:8000/api/handleSubmission', formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "Authorization": window.sessionStorage.getItem("token")
+        }
+      });
+    }
   };
 
-
   return (
-    <div className='form'>
+    <div className='wordbase-form'>
+      <h1>Submit a Wordbase</h1>
+      <p>Submit a .txt file</p>
       <form onSubmit={handleSubmit(handleSubmission)}>
-        <input type='file' {...register('file')} />
+        <input type='file' {...register('file', { required: true })} />
         <button>Submit</button>
       </form>
     </div>

@@ -41,7 +41,7 @@ body {
   }
 }
 
-.login-form {
+.login-form, .wordbase-form, .anagram-form{
   background-color: hsla(0, 0%, 0%, 0.9);
   display: flex;
   flex-direction: column;
@@ -52,14 +52,14 @@ body {
   border-style: solid;
 }
 
-.login-page {
+.login-page, .anagram-page {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.login-form h1 {
+.login-form, .wordbase-form, .anagram-form  h1 {
   color: greenyellow;
 }
 
@@ -68,7 +68,7 @@ body {
   flex-direction: column;
 }
 
-.login-form input[type=text], input[type=password]  {
+ input[type=text], input[type=password]  {
   width: 100%;
   background-color: #282c34;
   color: greenyellow;
@@ -97,5 +97,9 @@ button {
 }
 
 .login-form span {
+  color: greenyellow;
+}
+
+.wordbase-form p{
   color: greenyellow;
 }

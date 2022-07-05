@@ -7,8 +7,9 @@ function AnagramForm() {
     }
    
     return(
-      <div className='form'>  
+      <div className='anagram-form'>  
         <form>
+            <h1>Find Anagrams</h1>
             <input type='text' placeholder='word'></input>
             <button onClick={findAnagrams}>Find Anagrams</button>
         </form>
