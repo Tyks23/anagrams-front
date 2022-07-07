@@ -14,23 +14,30 @@ export default function RegistrationForm({ getLoginStatus }) {
     <div className='login-form'>
       <h1>Register</h1>
       <form onSubmit={handleSubmit((data) => authenticate('http://localhost:8000/api/register', data, getLoginStatus))}>
-        <input type='text' {...register('name', { required: true, minLength: 4, maxLength: 20, pattern: /^[A-Za-z]+$/i })} placeholder='name'></input>
+        <input type='text' {...register('name', { required: true, minLength: 2, pattern: /^[A-Za-z]+$/i })} placeholder='name'></input>
         {errors.name && errors.name.type === "required" && (
           <span>Name is required</span>
         )}
         {errors.name && errors.name.type === "minLength" && (
-          <span>Must contain 4+ letters</span>
-        )}
-         {errors.name && errors.name.type === "maxLength" && (
-          <span>Must contain less than 20 letters</span>
+          <span>Must contain 2+ letters</span>
         )}
         {errors.name && errors.name.type === "pattern" && (
           <span>Cant contain foreign symbols</span>
         )}
 
        
-        <input type='text' {...register('email')} placeholder='email'></input>
-        <input type='password' {...register('password')} placeholder='password'></input>
+        <input type='text' {...register('email', {required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })} placeholder='email'></input>
+        {errors.email && errors.email.type === "pattern" && (
+          <span>Invalid Email</span>
+        )}
+
+        <input type='password' {...register('password', {required: true, minLength: 4})} placeholder='password'></input>
+        {errors.password && errors.password.type === "required" && (
+          <span>Password is required</span>
+        )}
+        {errors.password && errors.password.type === "minLength" && (
+          <span>Must contain 4+ letters</span>
+        )}
         <button>Register</button>
       </form>
     </div>

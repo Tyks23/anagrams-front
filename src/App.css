@@ -57,6 +57,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .login-form, .wordbase-form, .anagram-form  h1 {
@@ -100,6 +101,6 @@ button {
   color: greenyellow;
 }
 
-.wordbase-form p{
+.wordbase-form, .anagram-form p{
   color: greenyellow;
 }
