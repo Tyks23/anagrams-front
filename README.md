@@ -11,7 +11,7 @@ The webapp requires NodeJS(https://nodejs.org/en/download/) to be installed on y
 
 After confirming that you have NodeJS installed on your system you will need to follow these steps:  
 1) Clone the repo
-2) Navigate to the frontend direcroty in a CLI
+2) Navigate to the anagram-front direcroty in a CLI
 3) enter the command 'npm install'
 
 The frontend application is now ready.  
