@@ -7,7 +7,7 @@ export default function AnagramForm() {
 
   const { register, handleSubmit } = useForm();
   const [anagramArr, setAnagramArr] = useState([]);
-  const anagramArr2 = [];
+  const [statusText, setStatusText] = useState('');
 
   const findAnagrams = async (data) => {
 
@@ -23,9 +23,12 @@ export default function AnagramForm() {
     })
       .then(function ({data}) {
         setAnagramArr(data.map(({word})=>word))
+        if(anagramArr.length === 0){
+          setStatusText('No anagram matches found in wordbase');
+        }
       })
       .catch(function (error) {
-        console.log(error);
+        setStatusText('Something went wrong: ' + error.message);
       });
   
     }
@@ -36,7 +39,7 @@ export default function AnagramForm() {
         <input type='text' {...register('word')} placeholder='word'></input>
         <button>Find Anagrams</button>
       </form> 
-      {anagramArr.map((word, key) => <p key={key}>{word}</p>)}
+      {anagramArr.length === 0 ? <p>{statusText}</p> : anagramArr.map((word, key) => <p key={key}>{word}</p>)}
     </div>
   )
 }

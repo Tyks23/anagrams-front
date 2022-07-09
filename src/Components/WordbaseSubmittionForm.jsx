@@ -9,7 +9,6 @@ export default function WordbaseSubmissionForm() {
 
   const handleSubmission = async (data) => {
 
-    console.log(data);
     let formData = new FormData();
     if (data.file[0].type.match('text.*')) {
       setStatusText('Uploading Wordbase');
@@ -24,11 +23,9 @@ export default function WordbaseSubmissionForm() {
         }
       })
         .then(function (response) {
-          //console.log(response);
           setStatusText('Upload Successful');
         })
         .catch(function (error) {
-          console.log(error);
           setStatusText('Upload failed: ' + error.message)
         });
     }
