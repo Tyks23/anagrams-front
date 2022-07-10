@@ -12,7 +12,7 @@ export default function RegistrationForm({ getLoginStatus }) {
   return (
     <div className='login-form'>
       <h1>Register</h1>
-      <form onSubmit={handleSubmit((data) => authenticate(BACK_URL + '/register', data, getLoginStatus))}>
+      <form onSubmit={handleSubmit((data) => authenticate(process.env.BACK_URL + '/register', data, getLoginStatus))}>
         <input type='text' {...register('name', { required: true, minLength: 2, pattern: /^[A-Za-z]+$/i })} placeholder='name'></input>
         {errors.name && errors.name.type === "required" && (
           <span>Name is required</span>
