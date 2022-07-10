@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { authenticate } from '../utils'
 
@@ -13,7 +12,7 @@ export default function RegistrationForm({ getLoginStatus }) {
   return (
     <div className='login-form'>
       <h1>Register</h1>
-      <form onSubmit={handleSubmit((data) => authenticate('http://localhost:8000/api/register', data, getLoginStatus))}>
+      <form onSubmit={handleSubmit((data) => authenticate(BACK_URL + '/register', data, getLoginStatus))}>
         <input type='text' {...register('name', { required: true, minLength: 2, pattern: /^[A-Za-z]+$/i })} placeholder='name'></input>
         {errors.name && errors.name.type === "required" && (
           <span>Name is required</span>

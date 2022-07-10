@@ -12,7 +12,7 @@ export default function AnagramForm() {
   const findAnagrams = async (data) => {
 
 
-    axios.post('http://localhost:8000/api/findAnagrams', {
+    axios.post(BACK_URL+'/findAnagrams', {
       word: data.word,
       user_id: sessionStorage.getItem('user_id')
     }, {
