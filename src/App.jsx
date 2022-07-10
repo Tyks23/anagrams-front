@@ -13,6 +13,7 @@ function App() {
   const getLoginStatus = (loginStatus) => {
     setLoggedIn(loginStatus);
   }
+  console.log(process.env.BACK_URL);
 
   return (
   <div className='App'>
