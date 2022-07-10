@@ -16,7 +16,7 @@ export default function WordbaseSubmissionForm() {
       formData.append("user_id", window.sessionStorage.getItem("user_id"));
 
 
-      axios.post(process.env.BACK_URL+'/uploadWordbase', formData, {
+      axios.post(process.env.REACT_APP_BACK_URL+'/uploadWordbase', formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           "Authorization": window.sessionStorage.getItem("token")
